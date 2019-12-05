@@ -1,6 +1,6 @@
 let fs = require("fs");
 
-const massList = fs.readFileSync("./parttwo.input.txt", "utf-8");
+const massList = fs.readFileSync("./p2.input.txt", "utf-8");
 const massArray = massList.split("\n")
 
 let total = [];

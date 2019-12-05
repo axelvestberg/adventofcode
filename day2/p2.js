@@ -1,6 +1,6 @@
 let fs = require("fs");
 
-const string = fs.readFileSync("./partone.input.txt", "utf-8");
+const string = fs.readFileSync("./p1.input.txt", "utf-8");
 const state = string.split(',').map(Number)
 
 let noun = null;
