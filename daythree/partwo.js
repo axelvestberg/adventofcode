@@ -3,7 +3,6 @@ const string = fs.readFileSync("./partone.input.txt", "utf-8");
 
 const distance = string => {
   let intersectArray = [];
-  let distanceArray = [];
   let L1Points = [[0, 0]];
   let L2Points = [[0, 0]];
   let arr = string.split("\n");
@@ -20,7 +19,6 @@ const distance = string => {
   parseArray(L1, L1Points);
   parseArray(L2, L2Points);
   calcIntersect(L1Points, L2Points, intersectArray);
-  closestManhattanDistance(intersectArray, distanceArray);
 };
 
 const parseArray = (lineArray, pointsArray) => {
@@ -54,17 +52,7 @@ const calcIntersect = (L1Points, L2Points, intersectArray) => {
     for (let k = 0; k < L2Points.length - 1; k++) {
       let a2 = L2Points[k];
       let b2 = L2Points[k + 1];
-      let inter = lineSegmentsIntersect(
-        a1[0],
-        a1[1],
-        b1[0],
-        b1[1],
-        a2[0],
-        a2[1],
-        b2[0],
-        b2[1]
-      );
-
+      let inter = lineSegmentsIntersect(a1[0], a1[1], b1[0], b1[1], a2[0], a2[1], b2[0], b2[1]);
       if (inter) {
         intersectArray.push(inter);
       }
@@ -88,18 +76,5 @@ const lineSegmentsIntersect = (x1, y1, x2, y2, x3, y3, x4, y4) => {
     return null;
   }
 };
-
-const closestManhattanDistance = (point, distanceArray) => {
-  for (let i = 0; i < point.length; i++) {
-    let distance = Math.abs(point[i][0]) + Math.abs(point[i][1]);
-    if (distance !== 0) {
-      distanceArray.push(distance);
-    }
-  }
-    const min = Math.min(...distanceArray)
-    console.log('Shortest distance to port', min)
-}
-
-
 
 distance(string);
