@@ -1,7 +1,7 @@
 let fs = require("fs");
 
-const string = fs.readFileSync("./p1.input.txt", "utf-8");
-const state = string.split(',').map(Number)
+const state = fs.readFileSync("./p1.input.txt", "utf-8").split(',').map(Number);
+// const state = string.split(',').map(Number)
 
 const opcode = (state) => {
 	state[1] = 12;
