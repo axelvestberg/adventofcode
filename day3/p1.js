@@ -77,7 +77,7 @@ const lineSegmentsIntersect = (x1, y1, x2, y2, x3, y3, x4, y4) => {
   var a_dy = y2 - y1;
   var b_dx = x4 - x3;
   var b_dy = y4 - y3;
-  let div = (-b_dx * a_dy + a_dx * b_dy);
+  let div = -b_dx * a_dy + a_dx * b_dy;
   var s = (-a_dy * (x1 - x3) + a_dx * (y1 - y3)) / div;
   var t = (+b_dx * (y1 - y3) - b_dy * (x1 - x3)) / div;
   let x = x1 - t * (x1 - x2);
@@ -96,10 +96,8 @@ const closestManhattanDistance = (point, distanceArray) => {
       distanceArray.push(distance);
     }
   }
-    const min = Math.min(...distanceArray)
-    console.log('Shortest distance to port', min)
-}
-
-
+  const min = Math.min(...distanceArray);
+  console.log("Shortest distance to port", min);
+};
 
 distance(string);

@@ -52,7 +52,16 @@ const calcIntersect = (L1Points, L2Points, intersectArray) => {
     for (let k = 0; k < L2Points.length - 1; k++) {
       let a2 = L2Points[k];
       let b2 = L2Points[k + 1];
-      let inter = lineSegmentsIntersect(a1[0], a1[1], b1[0], b1[1], a2[0], a2[1], b2[0], b2[1]);
+      let inter = lineSegmentsIntersect(
+        a1[0],
+        a1[1],
+        b1[0],
+        b1[1],
+        a2[0],
+        a2[1],
+        b2[0],
+        b2[1]
+      );
       if (inter) {
         intersectArray.push(inter);
       }
@@ -65,7 +74,7 @@ const lineSegmentsIntersect = (x1, y1, x2, y2, x3, y3, x4, y4) => {
   var a_dy = y2 - y1;
   var b_dx = x4 - x3;
   var b_dy = y4 - y3;
-  let div = (-b_dx * a_dy + a_dx * b_dy);
+  let div = -b_dx * a_dy + a_dx * b_dy;
   var s = (-a_dy * (x1 - x3) + a_dx * (y1 - y3)) / div;
   var t = (+b_dx * (y1 - y3) - b_dy * (x1 - x3)) / div;
   let x = x1 - t * (x1 - x2);
